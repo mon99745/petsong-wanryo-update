@@ -1,0 +1,55 @@
+
+
+<!-- -----------------------------------------------푸터 HTML------------------------------------ -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--        th:src="@{../} -->
+    </head>
+<!--footer 설정 -->
+<body>
+<footer th:fragment="footer">
+
+    <link rel="stylesheet" th:href="@{/css/layout_CSS/footer.css}" href="/src/main/resources/static/css/layout_CSS/footer.css">
+
+    <div class="Topleft">
+        <li>펫송완료</li><br>
+        <li>COPYRIGHT @펫티쉬 ALL RIGHTS RESERVED</li>
+        <br>
+        <li>COPYRIGHT @29cm ALL RIGHTS RESERVED</li>
+
+
+    </div>
+    <div class="Topright">
+        <li>(Return / Exchange)</li><br>
+        <li>충청남도 서산시 해미면 대곡2길 312-10</li>
+
+    </div>
+
+    <div class="MainName">
+       <a th:href="@{../index.html}" href="/src/main/resources/templates/Main/index.html"> <p>Petsong Wanryo</p></a>
+    </div>
+    <div class="right">
+        <li>Made by HanseoProject</li>
+    </div>
+
+    <div class="left">
+        <ul>
+            <li>TEL:010-xxx-xxx</li><br>
+            <li>평일 am 11:00 ~ pm 8:00</li><br>
+            <li>토,일 / 공휴일 휴무</li>
+        </ul>
+    </div>
+    <div class="center">
+        <a th:href="@{https://ko-kr.facebook.com}" href="https://ko-kr.facebook.com/" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+        <a th:href="@{https://www.instagram.com}" href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+        <a th:href="@{https://twitter.com/?lang=ko}" href="https://twitter.com/?lang=ko" target="_blank"><i class="fab fa-twitter-square fa-2x"></i></a>
+
+    </div>
+</footer>
+</body>
+</html>

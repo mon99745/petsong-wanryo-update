@@ -1,0 +1,190 @@
+<!--주석 필수-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<!--    th:href="@{../}" -->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script th:src="@{https://use.fontawesome.com/releases/v5.2.0/js/all.js}" src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <title>펫송완료</title>
+    <!--    <link rel="stylesheet" href="/static/css/index.css">-->
+    <link rel="stylesheet" th:href="@{../css/TopMenu/mypage.css?ver=1}" href="/src/main/resources/static/css/TopMenu/mypage.css?ver=1">
+    <link rel="stylesheet" th:href="@{/css/layout_CSS/header.css}" href="/src/main/resources/static/css/layout_CSS/header.css">
+    <!-- 네비게이션 관련 js 링크 -->
+    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js}" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script th:src="@{https://use.typekit.net/hoy3lrg.js}" src="https://use.typekit.net/hoy3lrg.js"></script>
+<!--    <script>try { Typekit.load({ async: true }); } catch (e) { }</script>-->
+
+    <!-- 폰트어썸 이미지 불러오기 링크 -->
+    <link rel="stylesheet" th:href="@{https://pro.fontawesome.com/releases/v5.10.0/css/all.css}" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+    <!--    일부러 타임리프 안건거-->
+    <!--    화면단에 header, footer 출력하기 위함-->
+    <script src="../static/js/layout_JS/call_layout.js"type="text/javascript"> </script>
+
+</head>
+
+<body>
+    <div class="all">
+    <div class="container">
+
+        <!-- -----------------------------------------------------최고 상단 메뉴 바 + 검색창---------------------------------------------------------------------       -->
+
+        <div id="headers"></div>
+        <!-- header 삽입 -->
+        <header th:replace="/layout/header :: header"></header>
+        <!-- --------------------------------------------------------------------------메인 왼쪽 ------------------------------------------------------------------------ -->
+        <main>
+                
+                    <div id="main-top">
+                        <div id="main-top-top">
+                            <h1>MyPage</h1>
+                        </div>
+                        <div id="main-top-middle">
+                            <div id="main-top-middle-1">
+                                    <i class="fas fa-user-circle fa-5x"></i>
+                                </div>
+                            <div id="main-top-middle-2">
+                                <li id="i1" sec:authentication="principal.username" ></li> 님
+<!--                                <li id="i2">vip 회원</li>-->
+                                <a th:href="@{/user/update}" href="/src/main/resources/templates/TopMenu/user-update">
+                                <li id="i3">회원정보수정</li>
+                                </a>
+                                <li id="i4">Wish</li>
+                                <li id="i5">Cart</li>
+
+                            </div>
+
+
+                        </div>
+                        <div id="main-top-bottom">
+                            <a href="#">
+                                <li id="list1">주문상황</li>
+                            </a>
+                            <a href="#">
+                                <li id="list2">최근본상품</li>
+                            </a>
+                            <a href="#">
+                                <li id="list3">쿠폰</li>
+                            </a>
+                            <a href="#">
+                                <li id="list4">내게시글</li>
+                            </a>
+                        </div>
+              
+
+                    <div id="main-middle">
+
+                            <div id="info1">
+                            <div id="info1-top1">
+                                <li>주문상황</li>
+                            </div>
+                            <div id="info1-top2">
+                                <li>입금전<br> 0</li>
+                                <i class="fas fa-chevron-right fa-3x"></i>
+                                <li>배송준비중<br> 0</li>
+                                <i class="fas fa-chevron-right fa-3x"></i>
+                                <li>배송중<br> 0</li>
+                                <i class="fas fa-chevron-right fa-3x"></i>
+                                <li>배송완료<br> 0</li>
+                            </div>
+
+                        </div>
+
+                        <div id="info2">
+                            <div id="info2-top1">
+                                <li>최근본상품</li>
+                            </div>
+                            
+                            <div id="info2-top2">
+                                <table border="0">
+                                    <tr class="order-head">
+                                        <td style="width: 100px;"></td>
+                                        <td>상품이름</td>
+                                        <td>가격</td>
+                                        <td>구매</td>
+                                        <td>추가</td>
+                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td><img src="/src/main/resources/static/image/dog1.jpeg" style="width: 80px; height: 80px;"></td>-->
+<!--                                        <td>누빌패딩강아지(Red)-s</td>-->
+<!--                                        <td>31,200원</td>-->
+<!--                                        <td><i class="fas fa-plus-square"></i></td>-->
+<!--                                        <td><i class="fas fa-plus-square"></i></td>-->
+<!--                                    </tr>-->
+<!--                                    <tr>-->
+<!--                                        <td><img src="/src/main/resources/static/image/dog1.jpeg" style="width: 80px; height: 80px;"></td>-->
+<!--                                        <td>누빌패딩강아지(Red)-s</td>-->
+<!--                                        <td>40,000원</td>-->
+<!--                                        <td><i class="fas fa-plus-square"></i></td>-->
+<!--                                        <td><i class="fas fa-plus-square"></i></td>-->
+<!--                                    </tr>-->
+                                
+                                </table>
+                            </div>
+                            <div id="info2-top3">
+                                <li type="button">Go Cart</li>
+                                <li type="button">Go Wish</li>
+                            </div>
+                          
+                        </div>
+
+
+
+                        <div id="info3">
+                            <div id="info3-top1">
+                                <li>쿠폰</li>
+                            </div>
+                            
+                            <div id="info3-top2">
+                                <table border="0">
+                                    <tr class="order-head2">
+                                        <td>쿠폰이름</td>
+                                        <td>사용</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10만원이상 구매 회원께 드리는 10% 쿠폰</td>
+                                        <td>사용가능</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10/31 까지 5만원이상 구매 회원께 드리는 고양이 사료 할인 쿠폰</td>
+                                        <td>사용불가</td>
+
+                                    </tr>
+                            
+                                </table>
+                            </div>
+                            <div id="info3-top3">
+                                <li type="button">쿠폰 보러가기</li>
+                            </div>
+
+
+                        </div>
+                        <div id="info4">
+                            <div id="info4-top1">
+                                <li>내게시글</li>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                        
+
+        </main>
+
+        <!-- --------------------------------------------메인 bottom---------------------------------- -->
+
+        <!-- ------------------------------------------------------------------------------------푸터------------------------------------------------------------------------------ -->
+        <div id="footers"></div>
+        <!-- footer 삽입 -->
+        <footer th:replace="layout/footer :: footer"></footer>
+
+    </div>
+</div>
+    <!-- js 링크 -->
+    <script th:src="@{../js/mypage.js}" src="/src/main/resources/static/js/mypage.js"></script>
+</body>
+
+</html>
