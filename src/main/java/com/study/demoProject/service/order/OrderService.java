@@ -29,7 +29,9 @@ public class OrderService {
     private final ProductRepository productRepository;
     private final CartRepository cartRepository;
 
-    //단순 주문 로직
+    /**
+     * 단순 주문 과정
+     */
     public Long order(OrderInfoDto infoDto, String username) {
         Product product = productRepository.findById(infoDto.getProduct_num()).orElseThrow(() -> new ProductNotFoundException("오류: 상품 정보가 없습니다."));
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
@@ -46,13 +48,17 @@ public class OrderService {
         return order.getId();
     }
 
-    //주문 취소
+    /**
+     * 주문 취소
+     */
     public void cancelOrder(Long order_num){
         Order order = orderRepository.findById(order_num).orElseThrow(EntityNotFoundException::new);
         order.cancelOrder();
     }
 
-    //다량 주문 로직
+    /**
+     * 다량 주문
+     */
     public Long orders(List<OrderInfoDto> orderInfoDtoList, String username) {
 
         // 로그인한 유저 조회

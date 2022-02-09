@@ -30,7 +30,9 @@ public class CartService {
     private final ProductRepository productRepository;
     private final OrderService orderService;
 
-    //장바구니 추가
+    /**
+     * 장바구니 추가
+     */
     public Long addCart(CartInfoDto infoDto, String username) {
         Product product = productRepository.findById(infoDto.getProduct_num()).orElseThrow(() -> new ProductNotFoundException("오류: 상품 정보가 없습니다."));
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
@@ -41,7 +43,9 @@ public class CartService {
         return cart.getId();
     }
 
-    //카트의 상품 주문로직
+    /**
+     * 장바구니 상품 주문로직
+     */
     public Long orderCart(List<CartOrderDto> cartOrderDtoList, String username){
         List<OrderInfoDto> orderInfoDtoList = new ArrayList<>(); //장바구니 리스트
 
@@ -63,13 +67,18 @@ public class CartService {
         }
         return orderId;
     }
-    //나의 장바구니
+
+    /**
+     * 회원에 따른 장바구니
+     */
     public List<Cart> findMyCart(User user) {
         return cartRepository.findByUser(user);
 
     }
 
-    //장바구니 삭제
+    /**
+     * 장바구니 삭제
+     */
     public void deleteById(Long id) {
         cartRepository.deleteById(id);
     }

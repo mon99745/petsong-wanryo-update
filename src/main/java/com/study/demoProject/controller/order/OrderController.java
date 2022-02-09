@@ -3,6 +3,7 @@ package com.study.demoProject.controller.order;
 import com.study.demoProject.domain.order.OrderDetail;
 import com.study.demoProject.domain.user.User;
 import com.study.demoProject.dto.order.OrderInfoDto;
+import com.study.demoProject.service.BoardService;
 import com.study.demoProject.service.order.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,8 +39,10 @@ public class OrderController {
 //        model.addAttribute("orders", orders);
 //        return "/admin/orderList";
 //    }
-
-    @GetMapping("/orders") //전체 주문 목록 확인
+    /**
+     * 전체 주문 목록 확인
+     */
+    @GetMapping("/orders")
     public String getOrders(Model model){
         List<OrderDetail> orders = orderService.findAllDetails(); //모든 주문 불러오기
 
@@ -47,6 +50,9 @@ public class OrderController {
         return "/admin/orderList";
     }
 
+    /**
+     * 클라이언트 주문 목록 확인
+     */
     @GetMapping("/myOrders")
     public String getMyOrders(Model model){
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); //현재 로그인 정보
@@ -56,7 +62,10 @@ public class OrderController {
         return "/order/myOrder";
     }
 
-    @PostMapping(value = "/order") //주문하기
+    /**
+     * 주문 과정
+     */
+    @PostMapping(value = "/order")
     public ResponseEntity order(OrderInfoDto infoDTO, BindingResult bindingResult, Principal principal){
         if(bindingResult.hasErrors()){
             StringBuilder sb = new StringBuilder();
@@ -79,7 +88,10 @@ public class OrderController {
         return new ResponseEntity<Long>(orderId, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/cancelOrder") //주문 취소
+    /**
+     * 주문 취소
+     */
+    @PostMapping(value = "/cancelOrder")
     public String cancelOrder(Long order_num){
         orderService.cancelOrder(order_num);
 

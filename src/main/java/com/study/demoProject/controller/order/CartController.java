@@ -26,7 +26,9 @@ import java.util.List;
 public class CartController {
     @Autowired
     private final CartService cartService;
-
+    /**
+     * 나의 장바구니
+     */
     @GetMapping("/myCart")
     public String getMyCart(Model model) {
         User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal(); //현재 로그인 정보
