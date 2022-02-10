@@ -38,6 +38,9 @@ public class CartController {
         return "/member/myCart";
     }
 
+    /**
+     * 주문 과정
+     */
     //    @PostMapping(value = "/order", produces = "application/json") //주문하기, application/json 부분은 지워야 할 듯
     @PostMapping(value = "/addCart") //주문하기, application/json 부분은 지워야 할 듯
     public ResponseEntity addCart(CartInfoDto infoDto, BindingResult bindingResult, Principal principal) {

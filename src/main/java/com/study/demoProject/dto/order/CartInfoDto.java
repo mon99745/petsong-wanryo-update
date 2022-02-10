@@ -6,6 +6,9 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+/**
+ *  유효성 검사(validation)
+ */
 @Getter
 @Setter
 public class CartInfoDto { //주문 실행 정보

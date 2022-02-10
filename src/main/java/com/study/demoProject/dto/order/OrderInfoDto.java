@@ -8,6 +8,9 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+/**
+ *  유효성 검사(validation)
+ */
 @Getter
 @Setter
 public class OrderInfoDto { //주문 실행 정보
