@@ -203,7 +203,12 @@
     </div>
 </div>
 <!-- js 링크 -->
-<script th:src="@{../../../static/js/topmenu/board/Notice.js}" src="../../../static/js/topmenu/board/Notice.js"></script>
+<!--Ajax 선언과 Bootstrap 선언 -->
+<!-- Ajax 선언은 데이터를 따로 비동기식으로 넘기기 위해 -->
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js}"></script>
+<script src="/src/main/resources/static/js/bootstrap/bootstrap.min.js"></script>
+
+<script th:src="@{../js/topmenu/board/Notice.js}" src="../../../static/js/topmenu/board/Notice.js"></script>
 
 </body>
 
