@@ -54,8 +54,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     //loginProcessingUrl에 form의 action url을 여기다 적어줍니다.
                     ///auth/user/login이 URL의 API Controller를 작성하지 않는 이유는 스프링 시큐리티가 얘를 가로채서 대신 작업을 수행해줍니다.
                     .loginProcessingUrl("/auth/user/login") //시큐리티가 해당 주소로 요청오는 로그인을 가로채서 대신 로그인
-                    .defaultSuccessUrl("/") //로그인이 성공하면 해당 URL로 이동
-//                    .successForwardUrl("/")
+//                    .defaultSuccessUrl("/") // 사용자가 로그인하기 전에 방문했던 페이지가 아닌, 다른 페이지를 원한다면 defaultSuccessUrl을 사용한다.
+//                    .successForwardUrl("/")// 로그인이 성공한 후 보내는 Url
                 .and()
                 .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

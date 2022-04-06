@@ -2,9 +2,11 @@ package com.study.demoProject.service;
 
 import com.study.demoProject.domain.board.Board;
 import com.study.demoProject.domain.board.BoardRepository;
+import com.study.demoProject.domain.board.NoticeRepository;
 import com.study.demoProject.domain.user.User;
 import com.study.demoProject.dto.board.BoardSaveRequestDto;
 import com.study.demoProject.dto.board.BoardUpdateRequestDto;
+import com.study.demoProject.dto.board.NoticeSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,15 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 
 public class NoticeService {
-    private final BoardRepository boardRepository;
+    private final NoticeRepository noticeRepository;
 
     /**
      * 글작성 로직
      */
     @Transactional
-    public Long save(BoardSaveRequestDto boardSaveRequestDto, User user) {
-        boardSaveRequestDto.setUser(user);
-        return boardRepository.save(boardSaveRequestDto.toEntity()).getId();
+    public Long save(NoticeSaveRequestDto noticeSaveRequestDto, User user) {
+        noticeSaveRequestDto.setUser(user);
+        return noticeRepository.save(noticeSaveRequestDto.toEntity()).getId();
     }
 
 //    /**
@@ -38,7 +40,7 @@ public class NoticeService {
      */
     @Transactional(readOnly = true)
     public Board detail(Long id) {
-        return boardRepository.findById(id)
+        return noticeRepository.findById(id)
                 .orElseThrow(()->{
                     return new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을 수 없습니다. id=" +id);
                 });
@@ -49,7 +51,7 @@ public class NoticeService {
     // JpaRepository의 deleteById는 void타입
     @Transactional
     public void deleteById(Long id) {
-        boardRepository.deleteById(id);
+        noticeRepository.deleteById(id);
     }
 
 
@@ -61,7 +63,7 @@ public class NoticeService {
     // 그리고 나서 Board의 값을 변경시키면 Service가 종료되는 시점에 트랜잭션이 종료되고 더티체킹이 일어난다.
     @Transactional
     public Long update(Long id, BoardUpdateRequestDto boardUpdateRequestDto) {
-        Board board = boardRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 id가 없습니다. id=" + id));
+        Board board = noticeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 id가 없습니다. id=" + id));
         board.update(boardUpdateRequestDto.getTitle(), boardUpdateRequestDto.getContent());
         return id;
     }
@@ -71,7 +73,7 @@ public class NoticeService {
      */
     @Transactional
     public int updateCount(Long id) {
-        return boardRepository.updateCount(id);
+        return noticeRepository.updateCount(id);
     }
 
     /**
@@ -79,7 +81,7 @@ public class NoticeService {
      */
     @Transactional(readOnly = true)
     public Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable) {
-        return boardRepository.findByTitleContainingOrContentContaining(title, content, pageable);
+        return noticeRepository.findByTitleContainingOrContentContaining(title, content, pageable);
     }
 
 

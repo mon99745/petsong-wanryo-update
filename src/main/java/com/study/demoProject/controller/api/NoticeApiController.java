@@ -4,6 +4,7 @@ import com.study.demoProject.config.auth.PrincipalDetail;
 import com.study.demoProject.dto.board.BoardSaveRequestDto;
 import com.study.demoProject.dto.board.BoardUpdateRequestDto;
 import com.study.demoProject.service.BoardService;
+import com.study.demoProject.service.NoticeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 
 public class NoticeApiController {
-    private final BoardService boardService;
+    private final NoticeService noticeService;
 
     /**
      * 글작성 API
@@ -22,7 +23,7 @@ public class NoticeApiController {
     // 어떤 사용자가 게시글을 작성하는지 알기 위해 @AuthenticationPrincipal 정보를 파라미터로 받는다.
     public Long save(@RequestBody BoardSaveRequestDto boardSaveRequestDto,
                      @AuthenticationPrincipal PrincipalDetail principalDetail) {
-        return boardService.save(boardSaveRequestDto, principalDetail.getUser());
+        return noticeService.save(boardSaveRequestDto, principalDetail.getUser());
     }
 
     /**
@@ -31,22 +32,15 @@ public class NoticeApiController {
     @DeleteMapping("/api/v1/notice/{id}")
     // id값을 주소에 받기 위해 @PathVariable
     public Long deleteById(@PathVariable Long id) {
-        boardService.deleteById(id);
+        noticeService.deleteById(id);
         return id;
     }
 
-//    /**
-//     * 글수정 API
-//     */
-//    @PutMapping("/api/v1/board/{id}")
-//    public Long update(@PathVariable Long id, @RequestBody BoardUpdateRequestDto boardUpdateRequestDto) {
-//        return boardService.update(id, boardService);
-//    }
     /**
      * 글수정 API
      */
     @PutMapping("/api/v1/notice/{id}")
     public Long update(@PathVariable Long id, @RequestBody BoardUpdateRequestDto boardUpdateRequestDto) {
-        return boardService.update(id, boardUpdateRequestDto);
+        return noticeService.update(id, boardUpdateRequestDto);
     }
 }
