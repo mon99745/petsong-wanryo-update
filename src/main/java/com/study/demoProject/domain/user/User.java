@@ -1,10 +1,12 @@
 package com.study.demoProject.domain.user;
 
+import com.study.demoProject.config.value.Address;
 import com.study.demoProject.domain.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 
@@ -13,6 +15,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor // Lombok - 빈 생성자를 만듬
 @Entity //JPA로 관리되는 엔티티 객체 (테이블)
+@Table(name = "users")
 public class User extends BaseTimeEntity {
 
     @Id // 테이블의 Primary Key(PK)
@@ -33,26 +36,23 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false, length = 30)
     // 이름
     // 컬럼명은 user_name으로 설정
-    private String user_name;
+    private String name;
 
     @Column(nullable = false, length = 20)
-    private String user_nickname; //닉네임
+    private String nickname; //닉네임
 
     @Column(nullable = false, length = 100)
-    private String user_birth; //생년월일
+    private String birth; //생년월일
 
     @Column(nullable = false, length = 100)
-    private String user_phone; // 휴대폰 번호
+    private String phone; // 휴대폰 번호
 
     @Column(nullable = false, length = 50)
-    private String user_email; // 이메일
+    private String email; // 이메일
 
+    @Embedded
     @Column(nullable = false, length = 100)
-    private String user_address; //주소
-
-//    이미 존재
-//    @Column(nullable = false, length = 100)
-//    private String user_date; //회원가입일자
+    private Address address; //주소
 
 
     @Enumerated(EnumType.STRING)
@@ -78,6 +78,7 @@ public class User extends BaseTimeEntity {
      */
     public void update(String user_pw, String user_nickname) {
         this.password = password;
-        this.user_nickname = user_nickname;
+        this.nickname = user_nickname;
     }
+
 }

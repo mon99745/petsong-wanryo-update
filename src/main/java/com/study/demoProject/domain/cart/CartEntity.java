@@ -18,7 +18,7 @@ public class CartEntity {
     private Long cartId;
 
     // User를 참조하는 외래키 역할
-    private Long authId;
+    private Long code;
 
     // Map을 이용하므로써 @ElementCollection의 단점을 보완
     // itemId를 키로 사용
@@ -29,8 +29,8 @@ public class CartEntity {
     @MapKeyColumn(name = "map_key")
     private Map<Long, CartLine> cart = new HashMap<>();
 
-    public CartEntity(Long authId) {
-        this.authId = authId;
+    public CartEntity(Long code) {
+        this.code = code;
     }
 
     public void addItemToCart(int targetStockQuantity, CartLine cartLine) {

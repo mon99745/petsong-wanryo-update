@@ -1,4 +1,4 @@
-package com.study.demoProject.controller.api;
+package com.study.demoProject.controller.api.reply;
 
 import com.study.demoProject.config.auth.PrincipalDetail;
 import com.study.demoProject.domain.reply.Reply;

@@ -1,5 +1,6 @@
 package com.study.demoProject.model.dao.cart;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.study.demoProject.model.dto.cart.CartLineDto;
 import org.springframework.stereotype.Repository;
 
@@ -17,16 +18,16 @@ public class JpaCartDao implements CartDao {
     }
 
     @Override
-    public List<CartLineDto> getCartLineListInCartPage(Long memberId) {
+    public List<CartLineDto> getCartLineListInCartPage(Long code) {
         List<CartLineDto> cartLineDtoList = em
-                .createQuery("select new com.galid.commerce.domains.cart.query.dto.CartLineDto(i.itemId, i.imagePath, i.name, i.price, cl.orderCount, i.stockQuantity)" +
+                .createQuery("select new com.study.demoProject.model.dto.cart.CartLineDto(i.itemId, i.imagePath, i.name, i.price, cl.orderCount, i.stockQuantity)" +
                         " from CartEntity c" +
                         " join c.cart cl" +
                         " on c.cartId = cl.cartId" +
                         " join ItemEntity i" +
                         " on cl.itemId = i.itemId" +
-                        " where c.memberId = :memberId", CartLineDto.class)
-                .setParameter("memberId", memberId)
+                        " where c.code = :code", CartLineDto.class)
+                .setParameter("code", code)
                 .getResultList();
 
         return cartLineDtoList;

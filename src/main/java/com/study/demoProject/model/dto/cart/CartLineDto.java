@@ -1,5 +1,6 @@
 package com.study.demoProject.model.dto.cart;
 
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.*;
 
 @Getter

@@ -1,5 +1,6 @@
 package com.study.demoProject.model.dto.user;
 
+import com.study.demoProject.config.value.Address;
 import com.study.demoProject.domain.user.Role;
 import com.study.demoProject.domain.user.User;
 import lombok.AllArgsConstructor;
@@ -17,12 +18,12 @@ public class UserSaveRequestDto {
 
     private String username;
     private String password;
-    private String user_name;
-    private String user_nickname;
-    private String user_birth;
-    private String user_phone;
-    private String user_email;
-    private String user_address;
+    private String name;
+    private String nickname;
+    private String birth;
+    private String phone;
+    private String email;
+    private Address address;
 
 
     private Role role;
@@ -31,12 +32,12 @@ public class UserSaveRequestDto {
         return User.builder()
                 .username(username)
                 .password(password)
-                .user_name(user_name)
-                .user_nickname(user_nickname)
-                .user_birth(user_birth)
-                .user_phone(user_phone)
-                .user_email(user_email)
-                .user_address(user_address)
+                .name(name)
+                .nickname(nickname)
+                .birth(birth)
+                .phone(phone)
+                .email(email)
+                .address(address)
                 .role(Role.USER)
                 .build();
     }

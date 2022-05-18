@@ -1,4 +1,4 @@
-package com.study.demoProject.controller.item;
+package com.study.demoProject.controller;
 
 import lombok.Getter;
 

@@ -1,4 +1,6 @@
 package com.study.demoProject.controller.cart;
+import com.study.demoProject.domain.user.AuthenticationConverter;
+import com.study.demoProject.domain.user.User;
 import com.study.demoProject.model.dto.cart.CartLineDto;
 import com.study.demoProject.service.cart.AddToCartRequestForm;
 import com.study.demoProject.service.cart.CartService;
@@ -6,7 +8,6 @@ import com.study.demoProject.service.cart.ModifyOrderCountRequestForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,9 +24,9 @@ public class CartController {
     @GetMapping("/carts")
     public String getCartPage(Authentication authentication,
                               Model model) {
-        Long memberId = authenticationConverter.getMemberFromAuthentication(authentication)
-                .getMemberId();
-        List<CartLineDto> cartLineDtoInCartPage = cartService.getCartInCartPage(memberId);
+        Long code = authenticationConverter.getUserFromAuthentication(authentication)
+                .getCode();
+        List<CartLineDto> cartLineDtoInCartPage = cartService.getCartInCartPage(code);
 
         model.addAttribute("cartLineList", cartLineDtoInCartPage);
 
@@ -35,9 +36,9 @@ public class CartController {
     @PostMapping("/carts")
     public String addItemToCart(@ModelAttribute @Valid AddToCartRequestForm addToCartRequestForm,
                                 Authentication authentication) {
-        MemberEntity memberEntity = authenticationConverter.getMemberFromAuthentication(authentication);
+        User user = authenticationConverter.getUserFromAuthentication(authentication);
 
-        cartService.addItemToCart(memberEntity.getMemberId(), addToCartRequestForm);
+        cartService.addItemToCart(user.getCode(), addToCartRequestForm);
 
         return "redirect:/carts";
     }
@@ -46,9 +47,9 @@ public class CartController {
     @ResponseBody
     public ResponseEntity modifyCartLine(@ModelAttribute ModifyOrderCountRequestForm modifyOrderCountRequestForm,
                                          Authentication authentication) {
-        MemberEntity memberEntity = authenticationConverter.getMemberFromAuthentication(authentication);
+        User user = authenticationConverter.getUserFromAuthentication(authentication);
 
-        cartService.modifyOrderCount(memberEntity.getMemberId(), modifyOrderCountRequestForm);
+        cartService.modifyOrderCount(user.getCode(), modifyOrderCountRequestForm);
 
         return ResponseEntity.ok().build();
     }
@@ -57,8 +58,8 @@ public class CartController {
     @ResponseBody
     public ResponseEntity deleteCartLine(@RequestParam("itemId") Long itemId,
                                          Authentication authentication) {
-        MemberEntity member = authenticationConverter.getMemberFromAuthentication(authentication);
-        cartService.removeCartLine(member.getMemberId(), itemId);
+        User user = authenticationConverter.getUserFromAuthentication(authentication);
+        cartService.removeCartLine(user.getCode(), itemId);
         return ResponseEntity.ok().build();
     }
 }

@@ -1,6 +1,8 @@
 package com.study.demoProject.service.item;
 
 import com.study.demoProject.domain.item.ItemRegisteredEvent;
+import com.study.demoProject.domain.review.ReviewProductEntity;
+import com.study.demoProject.domain.review.ReviewProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;

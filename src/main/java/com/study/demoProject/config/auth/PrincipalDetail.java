@@ -51,33 +51,33 @@ public class PrincipalDetail implements UserDetails {
 
     // 사용자 이름
     public String getName() {
-        return user.getUser_name();
+        return user.getName();
     }
 
     // 사용자 휴대폰 번호
     public String getPhone() {
-        return user.getUser_phone();
+        return user.getPhone();
     }
 
     //  사용자 닉네임
     public String getNickname() {
-        return user.getUser_nickname();
+        return user.getNickname();
     }
 
     //사용자 생년월일
     public String getDate() {
-        return user.getUser_birth();
+        return user.getBirth();
     }
 
     //사용자 이메일
     public String getEmail() {
-        return user.getUser_email();
+        return user.getEmail();
     }
 
-    //사용자 주소
-    public String getAdress() {
-        return user.getUser_address();
-    }
+//    //사용자 주소
+//    public String getAddress() {
+//        return user.getAddress();
+//    }
 
 
 

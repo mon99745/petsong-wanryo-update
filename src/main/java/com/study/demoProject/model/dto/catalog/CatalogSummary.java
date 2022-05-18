@@ -1,5 +1,6 @@
 package com.study.demoProject.model.dto.catalog;
 
+import com.querydsl.core.annotations.QueryProjection;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
