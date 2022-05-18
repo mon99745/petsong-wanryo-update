@@ -1,9 +1,9 @@
 package com.study.demoProject.controller.api;
 
 import com.study.demoProject.config.auth.PrincipalDetail;
-import com.study.demoProject.dto.board.BoardSaveRequestDto;
-import com.study.demoProject.dto.board.BoardUpdateRequestDto;
-import com.study.demoProject.service.BoardService;
+import com.study.demoProject.model.dto.board.BoardSaveRequestDto;
+import com.study.demoProject.model.dto.board.BoardUpdateRequestDto;
+import com.study.demoProject.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;

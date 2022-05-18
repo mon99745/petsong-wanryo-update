@@ -2,9 +2,8 @@ package com.study.demoProject.controller.api;
 
 import com.study.demoProject.config.auth.PrincipalDetail;
 import com.study.demoProject.domain.user.User;
-import com.study.demoProject.dto.user.UserSaveRequestDto;
-import com.study.demoProject.service.UserService;
-import com.study.demoProject.service.UserService;
+import com.study.demoProject.model.dto.user.UserSaveRequestDto;
+import com.study.demoProject.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.PostMapping;

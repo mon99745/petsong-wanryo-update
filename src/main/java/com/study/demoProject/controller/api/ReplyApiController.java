@@ -2,7 +2,7 @@ package com.study.demoProject.controller.api;
 
 import com.study.demoProject.config.auth.PrincipalDetail;
 import com.study.demoProject.domain.reply.Reply;
-import com.study.demoProject.service.ReplyService;
+import com.study.demoProject.service.reply.ReplyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
