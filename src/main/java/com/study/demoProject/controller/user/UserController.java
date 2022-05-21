@@ -10,7 +10,7 @@ public class UserController {
      */
     @GetMapping("/auth/user/login")
     public String userLogin() {
-        return "TopMenu/user/login";
+        return "user/login";
     }
 
     /**
@@ -18,7 +18,7 @@ public class UserController {
      */
     @GetMapping("/auth/user/save")
     public String userSave() {
-        return "TopMenu/user/joinus";
+        return "user/joinus";
     }
 
     /**
@@ -26,7 +26,7 @@ public class UserController {
      */
     @GetMapping("/user/page")
     public String userPage() {
-        return "TopMenu/user/mypage.html";
+        return "user/mypage.html";
     }
 
     /**
@@ -34,7 +34,7 @@ public class UserController {
      */
     @GetMapping("/user/update")
     public String userUpdate() {
-        return "TopMenu/user/user-update";
+        return "user/user-update";
     }
 
 

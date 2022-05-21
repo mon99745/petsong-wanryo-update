@@ -39,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf()
                     .disable() //csrf 토큰 해제
                 .authorizeRequests() // URL별 권한 관리를 설정하는 옵션
-                    .antMatchers("/","/index","/auth/**","/js/**", "/css/**","/image/**").permitAll()
+                    .antMatchers("/","/static/**","/index","/auth/**","/js/**", "/css/**","/image/**").permitAll()
                     .antMatchers("/layout/**","/MainMenu/**").permitAll()
 //                  .antMatchers("/").hasRole("USER") // USER, ADMIN만 접근 가능
 //                  .antMatchers("/admin/**").hasRole("ADMIN") // ADMIN만 접근 가능

@@ -17,7 +17,7 @@ public class QnaController {
      */
     @GetMapping("/auth/board/qna")
     public String qna() {
-        return "TopMenu/board/qna/QnA";
+        return "board/qna/QnA";
     }
 
 
@@ -26,7 +26,7 @@ public class QnaController {
      */
     @GetMapping("/board/qna/save")
     public String save() {
-        return "TopMenu/board/qna/qna-save";
+        return "board/qna/qna-save";
     }
 
     /**
@@ -37,7 +37,7 @@ public class QnaController {
     public String detail(@PathVariable Long id, Model model) {
         model.addAttribute("board", boardService.detail(id));
         boardService.updateCount(id);
-        return "TopMenu/board/qna/qna-detail";
+        return "board/qna/qna-detail";
     }
 
     /**
@@ -46,6 +46,6 @@ public class QnaController {
     @GetMapping("/board/qna/{id}/update")
     public String update(@PathVariable Long id, Model model) {
         model.addAttribute("board", boardService.detail(id));
-        return "TopMenu/board/qna/qna-update";
+        return "board/qna/qna-update";
     }
 }

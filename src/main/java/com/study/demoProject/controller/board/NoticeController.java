@@ -17,7 +17,7 @@ public class NoticeController {
      */
     @GetMapping("/auth/board/notice")
     public String notice() {
-        return "TopMenu/board/notice/Notice";
+        return "board/notice/Notice";
     }
 
     /**
@@ -25,7 +25,7 @@ public class NoticeController {
      */
     @GetMapping("/board/notice/save")
     public String save() {
-        return "TopMenu/board/notice/notice-save";
+        return "board/notice/notice-save";
     }
 
     /**
@@ -36,7 +36,7 @@ public class NoticeController {
     public String detail(@PathVariable Long id, Model model) {
         model.addAttribute("board", noticeService.detail(id));
         noticeService.updateCount(id);
-        return "TopMenu/board/notice/notice-detail";
+        return "board/notice/notice-detail";
     }
 
     /**
@@ -45,6 +45,6 @@ public class NoticeController {
     @GetMapping("/board/notice/{id}/update")
     public String update(@PathVariable Long id, Model model) {
         model.addAttribute("board", noticeService.detail(id));
-        return "TopMenu/board/notice/notice-update";
+        return "board/notice/notice-update";
     }
 }
